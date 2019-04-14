@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div>
+        <span>"v-model"</span> <br>
+        <input type="text" v-model="name">
+        <br>
+        <span>"{{}}"</span> <br>
+        {{ message }}
+        <button v-on:click="reverseMessage">逆转消息</button>
+    </div>
+    <div>
+        <span>"v-bind"</span><br>
+         <span v-bind:title="message">
+    鼠标悬停几秒钟查看此处动态绑定的提示信息！
+         </span>
+    </div>
+    <div>
+        <br>
+        <div>"v-for 指令可以绑定数组的数据来渲染一个项目列表："</div>
+        <ol>
+            <li v-for="arry in arrys">
+                {{ arry.text }}
+            </li>
+        </ol>
+    </div>
+    <div>
+        <hr>
+        <H4>计算属性缓存 vs 方法</H4>
+        <h6>我们可以将同一函数定义为一个方法而不是一个计算属性。两种方式的最终结果确实是完全相同的。然而，不同的是计算属性是基于它们的响应式依赖进行缓存的。只在相关响应式依赖发生改变时它们才会重新求值。这就意味着只要 message 还没有发生改变，多次访问 reversedMessage 计算属性会立即返回之前的计算结果，而不必再次执行函数。</h6>
+        <p>Original message: "{{ message }}"</p>
+        <input type="text" v-model="message">
+        <p>Computed reversed message: "{{ reversedComputed }}"</p>
+        <p>Computed reversed message: "{{ reversedMethod() }}"</p>
+    </div>
+</div>
+<div id="app1">
+    <p v-if="seen_if">现在你看到我了v-if</p>
+    <p v-show="seen_show">现在你看到我了v-show</p>
+</div>
+<!-- js文件放在底部，放在头部报错-->
+<script src="../lib/vue.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>
